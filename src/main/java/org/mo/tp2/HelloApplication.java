@@ -6,5 +6,4 @@ import jakarta.ws.rs.core.Application;
 @ApplicationPath("/app")
 public class HelloApplication extends Application {
 
-
 }

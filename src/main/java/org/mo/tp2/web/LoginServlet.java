@@ -14,11 +14,10 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException , ServletException {
-        // Afficher le formulaire
-        resp.setContentType("text/html;charset=UTF-8");
-        resp.getWriter().println("<h1> Login  </h1>");
 
-        req.getRequestDispatcher("/login.html").forward(req,resp);
+
+        req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req,resp);
+//        req.getRequestDispatcher("/login.html").forward(req,resp);
 
     }
 
@@ -36,6 +35,7 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("/tp2/dashboard");
         } else {
             resp.sendRedirect("/tp2/login?erreur=1");
+//            resp.sendRedirect("/tp2/dashboard");
         }
     }
 }

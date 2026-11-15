@@ -1,4 +1,17 @@
 package org.mo.tp2.listener;
 
-public class AppInitListener {
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+import org.mo.tp2.model.ProduitDAO;
+
+
+@WebListener
+public class AppInitListener implements ServletContextListener {
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+            sce.getServletContext().setAttribute("produitDAO", new ProduitDAO()) ;
+
+
+    }
 }
