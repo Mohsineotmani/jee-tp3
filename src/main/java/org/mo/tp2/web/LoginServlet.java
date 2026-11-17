@@ -28,6 +28,8 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         // Vérifier (exemple simplifié)
+        System.out.println( "username: " + username );
+        System.out.println( "password: " + password );
         if ("admin".equals(username) && "password".equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("user", username);

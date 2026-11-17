@@ -5,8 +5,6 @@
   Time: 15:24
   To change this template use File | Settings | File Templates.
 --%>
-
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
@@ -27,7 +25,7 @@
 
 <form method="post" action="${ctx}/login">
     <label>Login
-        <input type="text" name="login" value="${fn:escapeXml(login)}" required>
+        <input type="text" name="username" value="${fn:escapeXml(login)}" required>
     </label>
     <label>Mot de passe
         <input type="password" name="password" required>

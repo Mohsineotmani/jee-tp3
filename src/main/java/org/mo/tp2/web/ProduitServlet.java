@@ -34,12 +34,11 @@ public class ProduitServlet extends HttpServlet {
         String action = req.getParameter("action");
         // TODO : selon action -> lister / formulaire vide / formulaire pré-rempli
         // id invalide ou inconnu -> resp.sendError(404)
-        if (action == null || action.isBlank() || action.equals("list")) {
-            req.setAttribute("produit", new Produit());
-            req.getRequestDispatcher(FORM).forward(req, resp);
-
-        }
-        else if ("edit".equals(action)) {
+        if (action == null || action.isBlank()) {
+            List<Produit> produits = dao.findAll();
+            req.setAttribute("produits", produits);
+            req.getRequestDispatcher(LIST).forward(req, resp);
+        } else if ("edit".equals(action)) {
             Long id = Long.valueOf(req.getParameter("id").trim());
             Produit p = dao.findById(id);
             if (p == null) {
@@ -47,8 +46,12 @@ public class ProduitServlet extends HttpServlet {
                 return;
             }
             req.setAttribute("produit", p);
-            req.getRequestDispatcher(FORM).forward(req, resp);}
-        else {
+            req.getRequestDispatcher(FORM).forward(req, resp);
+        } else if ("new".equals(action)) {
+            req.setAttribute("produit", new Produit());
+            req.getRequestDispatcher(FORM).forward(req, resp);
+
+        } else {
             List<Produit> produits = dao.findAll();
             req.setAttribute("produits", produits);
             req.getRequestDispatcher(LIST).forward(req, resp);

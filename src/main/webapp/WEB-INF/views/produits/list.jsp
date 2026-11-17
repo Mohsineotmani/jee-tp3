@@ -24,6 +24,11 @@
 <c:if test="${not empty sessionScope.flash}">
     <div class="flash"><c:out value="${sessionScope.flash}"/></div>
     <c:remove var="flash" scope="session"/>
+    <%--    ou
+    <%
+        session.removeAttribute("flash");
+    %>
+    --%>
 </c:if>
 
 <p><a href="${ctx}/produits?action=new">Ajouter un produit</a></p>
